@@ -1,8 +1,3 @@
-import TopBar from "@/components/layout/TopBar";
-import MainHeader from "@/components/layout/MainHeader";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-
 import Hero from "@/components/home/Hero";
 import Clients from "@/components/home/Clients";
 import Services from "@/components/home/Services";
@@ -34,22 +29,16 @@ import FloatingContact from "@/components/home/FloatingContact";
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-
-      {/* Header */}
-      <TopBar />
-      <MainHeader />
-      <Navbar />
-
       {/* Hero */}
       <Hero />
 
-      {/* Trust */}
+      {/* Trusted Clients */}
       <Clients />
 
       {/* Services */}
       <Services />
 
-      {/* Business Solutions */}
+      {/* Solutions */}
       <Solutions />
 
       {/* Products */}
@@ -112,18 +101,14 @@ export default function Home() {
       {/* FAQ */}
       <FAQ />
 
-      {/* Contact Section */}
+      {/* Contact CTA */}
       <ContactCTA />
 
       {/* Final CTA */}
       <CTA />
 
-      {/* Footer */}
-      <Footer />
-
       {/* Floating Contact Buttons */}
       <FloatingContact />
-
     </main>
   );
 }

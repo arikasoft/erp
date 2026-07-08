@@ -1,11 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+import TopBar from "@/components/layout/TopBar";
+import MainHeader from "@/components/layout/MainHeader";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arikasoft.com"),
 
   title: {
-    default: "ArikaSoft Private Limited | ERP, CRM, AI & Software Development Company",
+    default:
+      "ArikaSoft Private Limited | ERP, CRM, AI & Software Development Company",
     template: "%s | ArikaSoft Private Limited",
   },
 
@@ -18,17 +25,15 @@ export const metadata: Metadata = {
     "CRM Software",
     "HRMS",
     "Software Company",
-    "Next.js Development",
-    "Laravel Development",
+    "Next.js",
+    "Laravel",
     "AI Solutions",
     "Cloud Solutions",
     "Website Development",
     "Mobile App Development",
-    "Digital Transformation",
     "NGO ERP",
     "School ERP",
     "Hospital ERP",
-    "Business Software",
   ],
 
   authors: [
@@ -48,14 +53,17 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
+  },
+
+  alternates: {
+    canonical: "https://arikasoft.com",
   },
 
   openGraph: {
@@ -63,16 +71,16 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://arikasoft.com",
     siteName: "ArikaSoft Private Limited",
-    title:
-      "ArikaSoft Private Limited | Enterprise Software & Digital Transformation",
+    title: "ArikaSoft Private Limited",
     description:
-      "Enterprise ERP, CRM, HRMS, AI, Mobile Apps, Cloud Solutions and Custom Software Development.",
+      "Enterprise ERP, CRM, HRMS, AI, Cloud & Software Development Company.",
+
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ArikaSoft Private Limited",
+        alt: "ArikaSoft",
       },
     ],
   },
@@ -81,22 +89,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ArikaSoft Private Limited",
     description:
-      "Enterprise Software Development Company",
+      "Enterprise ERP, CRM, AI & Software Development Company",
     images: ["/og-image.jpg"],
   },
 
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.ico",
+      },
+    ],
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-
-  alternates: {
-    canonical: "https://arikasoft.com",
-  },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -105,9 +113,9 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -120,7 +128,27 @@ export default function RootLayout({
           selection:text-white
         "
       >
-        {children}
+        {/* Header */}
+
+        <TopBar />
+
+        <MainHeader />
+
+        <Navbar />
+
+        {/* Main Content */}
+
+        <main className="min-h-screen">
+          {children}
+        </main>
+
+        {/* Footer */}
+
+        <Footer />
+
+        {/* Utilities */}
+
+        <ScrollToTop />
       </body>
     </html>
   );
